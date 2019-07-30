@@ -18,6 +18,7 @@ RSpec.describe 'Clabe' do
       expected_city = data[:city]
 
       clabe_validation = Clabe.validate(raw_clabe)
+      puts clabe_validation
       actual_validation = clabe_validation[:is_valid]
       actual_bank_tag = clabe_validation[:bank_tag]
       actual_city = clabe_validation[:city]
