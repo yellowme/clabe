@@ -549,7 +549,6 @@ module Clabe
 
   def validate(clabe)
     clabe_params = get_params(clabe)
-    puts clabe_params
 
     unless clabe.length == 18
       return {
