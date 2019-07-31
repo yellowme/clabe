@@ -11,9 +11,9 @@
 
 Successfully validation
 ```ruby
-CLABE = '002115016003269411'
+CLABE = '002114016003269412'
 Clabe.validate(CLABE)
-# returns { is_valid: true, bank_tag: 'BANAMEX', city: 'San Luis de la Paz' }
+# returns { is_valid: true, bank_tag: 'BANAMEX', city: 'Huixtla' }
 ```
 
 Invalid validation
