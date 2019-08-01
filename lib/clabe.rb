@@ -1,4 +1,6 @@
 module Clabe
+  ClabeValidation = Struct.new(:is_valid?, :bank_tag, :bank_name, :city, :errors)
+
   BANKS = {
     "002" => { tag: 'BANAMEX', name: 'Banco Nacional de México, S.A.' },
     "006" => { tag: 'BANCOMEXT', name: 'Banco Nacional de Comercio Exterior' },
@@ -513,9 +515,7 @@ module Clabe
 
   CLABE_WEIGHT_FACTOR_MAP = [3, 7, 1].freeze
 
-  module_function
-
-  def compute_checksum(clabe)
+  private_class_method def self.compute_checksum(clabe)
     result = 0
 
     clabe.split('')[0...17].each_with_index do |val, index|
@@ -525,7 +525,7 @@ module Clabe
     return ((10 - result % 10) % 10).to_s
   end
 
-  def get_params(clabe)
+  private_class_method def self.get_params(clabe)
     bank_code = clabe[0...3]
     city_code = clabe[3...6]
     account = clabe[6...17]
@@ -547,49 +547,39 @@ module Clabe
     }
   end
 
-  def validate(clabe)
+  def self.validate(clabe)
     clabe_params = get_params(clabe)
+    clabe_validation = ClabeValidation.new(false)
+    clabe_validation[:errors] = []
 
     unless clabe.length == 18
-      return {
-        is_valid: false,
-        error: 'Invalid length'
-      }
-    end
-
-    unless clabe_params[:checksum] == clabe_params[:real_checksum]
-      return {
-        is_valid: false,
-        error: 'Must have a valid control digit'
-      }
+      clabe_validation[:errors] << 'invalid length'
     end
 
     unless (clabe =~ /[^0-9]/).nil?
-      return {
-        is_valid: false,
-        error: 'Invalid characters'
-      }
+      clabe_validation[:errors] << 'invalid characters'
     end
 
     if clabe_params[:bank].nil?
-      return {
-        is_valid: false,
-        error: 'Invalid bank'
-      }
+      clabe_validation[:errors] << 'invalid bank'
     end
 
     if clabe_params[:city].nil?
-      return {
-        is_valid: false,
-        error: 'Invalid city'
-      }
+      clabe_validation[:errors] << 'invalid city'
     end
 
-    return {
-      is_valid: true,
-      bank_tag: clabe_params[:bank][:tag],
-      bank_name: clabe_params[:bank][:name],
-      city: clabe_params[:city]
-    }
+    unless clabe_params[:checksum] == clabe_params[:real_checksum]
+      clabe_validation[:errors] << 'must have a valid control digit'
+    end
+
+    unless clabe_validation.errors.empty?
+      return clabe_validation
+    end
+
+    clabe_validation[:is_valid?] = true
+    clabe_validation[:bank_tag] = clabe_params[:bank][:tag]
+    clabe_validation[:bank_name] = clabe_params[:bank][:name]
+    clabe_validation[:city] = clabe_params[:city]
+    return clabe_validation
   end
 end
