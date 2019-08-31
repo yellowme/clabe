@@ -1,5 +1,5 @@
 module Clabe
-  ClabeValidation = Struct.new(:is_valid?, :bank_tag, :bank_name, :city, :errors)
+  ClabeValidation = Struct.new(:is_valid?, :bank_tag, :bank_name, :bank_code, :city, :errors)
 
   BANKS = {
     "002" => { tag: 'BANAMEX', name: 'Banco Nacional de México, S.A.' },
@@ -577,6 +577,7 @@ module Clabe
     end
 
     clabe_validation[:is_valid?] = true
+    clabe_validation[:bank_code] = clabe_params[:bank_code]
     clabe_validation[:bank_tag] = clabe_params[:bank][:tag]
     clabe_validation[:bank_name] = clabe_params[:bank][:name]
     clabe_validation[:city] = clabe_params[:city]
