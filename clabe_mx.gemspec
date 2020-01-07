@@ -5,7 +5,7 @@ require "clabe/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.name        = "clabe"
+  spec.name        = "clabe_mx"
   spec.version     = Clabe::VERSION
   spec.date        = '2019-10-10'
   spec.description = "Ruby gem to validate and get details from a CLABE"
