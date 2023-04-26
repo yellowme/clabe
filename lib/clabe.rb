@@ -1014,7 +1014,11 @@ module Clabe
     "959" => "Valla de Cos MX-ZAC",
     "960" => "Victor Rosales MX-ZAC",
     "961" => "Villa Gonzalez Ortega MX-ZAC",
-    "962" => "Villanueva MX-ZAC"
+    "962" => "Villanueva MX-ZAC",
+    "974" => "Crédito Automotriz",
+    "975" => "Tarjeta de Crédito",
+    "969" => "Cuenta de fondos de pago electrónico",
+    "974" => "Crédito personal"
   }.freeze
 
   CLABE_WEIGHT_FACTOR_MAP = [3, 7, 1].freeze
