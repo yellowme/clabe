@@ -2,25 +2,35 @@
 
 ## Installation
 
-- Add `gem "clabe"` to your application's Gemfile and then execute `bundle`.
-- Or install it yourself as: `gem install clabe`
+Add to your application’s Gemfile:
+
+```rb
+gem "clabe_mx", require: "clabe"
+```
+
+And execute `bundle`.
 
 ## Usage
 
-#### Validate and serialize
+#### Validate
 
-Successfully validation
+Successful validation:
+
 ```ruby
-CLABE = '002114016003269412'
-Clabe.validate(CLABE)
-# returns { is_valid: true, bank_tag: 'BANAMEX', city: 'Huixtla' }
+validation = Clabe.validate("002114016003269412")
+validation.is_valid? # => true
+validation.bank_tag # => "BANAMEX"
+validation.bank_name # => "Banco Nacional de México, S.A."
+validation.bank_code # => "002"
+validation.city # => "Huixtla"
 ```
 
-Invalid validation
+Invalid validation:
+
 ```ruby
-CLABE = '002010077777777779'
-Clabe.validate(CLABE)
-# returns { is_valid: false, error: 'Must have a valid control digit' }
+validation = Clabe.validate("002010077777777779")
+validation.is_valid? # => false
+validation.errors # => ["must have a valid control digit"]
 ```
 
 ## License
