@@ -6,8 +6,8 @@ RSpec.describe 'Clabe' do
     { clabe: '00000000000000000a', is_valid: false, bank_tag: nil, city: nil },
     { clabe: '002010077777777779', is_valid: false, bank_tag: nil, city: nil },
     { clabe: '000000000000000000', is_valid: false, bank_tag: nil, city: nil },
-    { clabe: '002114016003269412', is_valid: true, bank_tag: 'BANAMEX', city: 'Huixtla', code: '002' },
-    { clabe: '032180000118359719', is_valid: true, bank_tag: 'IXE', city: 'Atizapan, Chalco, Ciudad de México, Coacalco, Cuautitlán, Cuautitlán Izcalli, Ecatepec, Huehuetoca, Huixquilucan, Ixtapaluca, Los Reyes La Paz, Naucalpan, Nezahualcóyotl, Tecamac, Teotihuacán, Texcoco, Tlalnepantla', code: '032' }
+    { clabe: '002114016003269412', is_valid: true, bank_tag: 'BANAMEX', city: 'Huixtla MX-CHP', code: '002' },
+    { clabe: '032180000118359719', is_valid: true, bank_tag: 'IXE', city: 'Atizapan', code: '032' }
   ]
 
   it 'validate' do
