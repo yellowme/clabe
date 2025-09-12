@@ -15,8 +15,8 @@ Gem::Specification.new do |spec|
   spec.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   spec.authors     = ["Yellowme"]
   spec.email       = 'hola@yellowme.mx'
-  spec.homepage    = 'https://rubygems.org/gems/clabe'
-  spec.license      = 'MIT'
+  spec.homepage    = 'https://github.com/yellowme/clabe'
+  spec.license     = 'MIT'
 
   spec.add_development_dependency "rspec", "~> 3.8"
 end
