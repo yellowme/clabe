@@ -793,6 +793,7 @@ module Clabe
     "819" => "Mier MX-TAM",
     "820" => "Nva Ciudad Guerrero MX-TAM",
     "821" => "Colombia, Nuevo Laredo MX-TAM, Hidalgo MX-TAM, Reynosa",
+    "822" => "Hidalgo MX-TAM, Reynosa",
     "823" => "Río Bravo MX-TAM",
     "824" => "San Fernando MX-TAM",
     "825" => "Soto la Marina MX-TAM",
